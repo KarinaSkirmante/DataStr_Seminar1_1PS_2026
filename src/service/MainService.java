@@ -16,6 +16,8 @@ public class MainService {
 			symbols.print();//a Z b c
 			symbols.remove(2);//a Z c (jeb b tiek izdzēsts)
 			symbols.print();//a Z c
+			
+			System.out.println(symbols.get(1));//Z
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

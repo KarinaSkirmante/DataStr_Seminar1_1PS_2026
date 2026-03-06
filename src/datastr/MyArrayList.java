@@ -120,13 +120,29 @@ public class MyArrayList {
 		
 	}
 
-	
-	
-	//veikt elmeentu kopēsanu no index sūnas līdz beigām (no beigam, līdz index sūnai)
-	
-	
-	//ielikt index šūna jauno elementu
-	//palielināt howManyElements par 1
+
+	public void remove(int index) throws Exception {
+		
+		if(isEmpty()) {
+			throw (new Exception("Saraksts ir tukšs, tāpēc nevar izdzēst elementus"));
+		}
+		
+		if(index < 0) {
+			throw (new Exception("Nevar izdzēst elementu, jo index ir negatīvs"));
+		}
+		
+		if(index > howManyElements) {
+			throw (new Exception("Nevar izdzēst elementu, jo index ir lielāks ka elementu skaits"));
+		}
+		
+		
+		for(int i = index; i < howManyElements-1; i++) {
+			list[i] = list[i+1];
+		}
+		list[howManyElements-1] = ' ';//pie referenču vērtībām būs jāuzstāda null
+		howManyElements--;
+		
+	}
 	
 	
 	

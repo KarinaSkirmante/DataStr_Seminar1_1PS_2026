@@ -1,6 +1,7 @@
 package service;
 
 import datastr.MyArrayList;
+import model.Student;
 
 public class MainService {
 
@@ -35,6 +36,33 @@ public class MainService {
 			System.out.println(e.getMessage());
 		}
 
+		System.out.println("-----------------STUDENTI------------");
+		MyArrayList<Student> allStudents = new MyArrayList<Student>();
+		allStudents.add(new Student("Janis", "Berzins"));//Janis
+		Student s1 = new Student("Baiba", "Jauka");
+		allStudents.add(s1);//Janis Baiba
+		try
+		{
+			allStudents.add(new Student("Peteris", "Nejaukais"), 0);//Peteris Janis Baiba
+			allStudents.print();//Peteris Janis Baiba
+			allStudents.remove(0);//Pēteris izdzest
+			allStudents.print();//Janis Baiba
+			allStudents.add(new Student("Kaspars", "Kalnins"));//Janis Baiba Kaspars
+			allStudents.add(new Student("Liga", "Jautra"));//Janis Baiba Kaspars Liga
+			System.out.println(allStudents.get(3));//Liga
+			System.out.println(allStudents.search(s1));//Mekleju Baibu - 1
+			System.out.println(allStudents.getNextElement(s1));//Kaspars
+			allStudents.print();
+			allStudents.sort();
+			allStudents.print();
+			allStudents.makeEmpty();
+			allStudents.add(new Student("Karina", "Skirmante"));
+			allStudents.print();//Karina
+			
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 }

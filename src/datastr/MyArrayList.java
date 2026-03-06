@@ -1,0 +1,115 @@
+package datastr;
+
+
+public class MyArrayList {
+	//1.mainīgie
+	private char[] list;
+	private final int DEFAULT_SIZE = 8;//pec noklusjeuma bus 8 sunu masivs, ja lietotajs pats neizdomas citu skaitu
+	private int size = DEFAULT_SIZE;//8
+	private int howManyElements = 0;
+	
+	//2. konstruktori
+	public MyArrayList() {
+		list = new char[size];
+	}
+	
+	public MyArrayList(int inputSize) {
+		if(inputSize > 0) {
+			size = inputSize;
+		}
+				
+		list = new char[size];
+	}
+	
+	//3. pamatalgoritmu funkcijas
+	public boolean isEmpty() {
+		//1. garais if-else
+		/*if(howManyElements == 0) {
+			return true;//ir tukšs saraksts
+		}
+		else
+		{
+			return false;//nav tukšs saraksts
+		}*/
+		
+		//2. īsais if-else
+		//return (howManyElements == 0) ?  true : false;
+		
+		//vel viens piemērs īsajam if un else
+		/*int aaa;
+		if(howManyElements == 0) {
+			aaa = 4 * 30;
+		}
+		else
+		{
+			aaa = 1000/4;
+		}
+		
+		aaa = (howManyElements == 0) ? 4 * 30 : 1000/4;*/
+		
+		//3.pats efektīvakais veids
+		return (howManyElements == 0);
+		
+	}
+	
+	
+	public boolean isFull() {
+		return (howManyElements == size);
+	}
+	
+	
+	private void resize() {
+
+		int largeSize = (howManyElements < 100)? size * 2 : (int)(size * 1.5);
+		
+		char[] largeList = new char[largeSize];
+		
+		
+		for(int i = 0; i < howManyElements; i++) {
+			largeList[i] = list[i];
+		}
+		
+		list = largeList;
+		System.gc();//izdzēsis no RAM atmiņas mazo masīvu, jo tam vairs nav mainīgais piesaistīts
+		size = largeSize;
+		
+	}
+	
+	public void add(char element) {
+		if(isFull()) {
+			resize();
+		}
+		
+		list[howManyElements] = element;
+		howManyElements++;
+		
+		//īsaks pieraksts, apvienot abas koda rindas vienā->list[howManyElements++] = element;
+		
+		
+	}
+	
+	//funkcijas definīcija add(char element, int index)
+	
+	public void add(char element, int index) throws Exception {
+		if(index < 0) {
+			throw (new Exception("Nevar pievienot elementu, jo index ir negatīvs"));
+		}
+	}
+	//pārbaudīt index vērtību, lai nav negatīvs
+	//pārbaudīt index vērtību, lai nav lielāks par howManyElements
+	//abos gadijumos izmest izņemumu
+	
+	//pārbaudīt, vai masīvs nav pilns, ja ir, tad izsaukt resize
+	
+	//veikt elmeentu kopēsanu no index sūnas līdz beigām (no beigam, līdz index sūnai)
+	
+	
+	//ielikt index šūna jauno elementu
+	//palielināt howManyElements par 1
+	
+	
+	
+	
+	
+
+}

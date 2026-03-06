@@ -94,12 +94,33 @@ public class MyArrayList {
 		if(index < 0) {
 			throw (new Exception("Nevar pievienot elementu, jo index ir negatīvs"));
 		}
-	}
-	//pārbaudīt index vērtību, lai nav negatīvs
-	//pārbaudīt index vērtību, lai nav lielāks par howManyElements
-	//abos gadijumos izmest izņemumu
+		
+		if(index > howManyElements) {
+			throw (new Exception("Nevar pievienot elementu, jo index ir lielāks ka elementu skaits"));
+		}
+		
 	
-	//pārbaudīt, vai masīvs nav pilns, ja ir, tad izsaukt resize
+		
+		if(index == howManyElements) {//gribam pievienot pirmajā brīvajā šūnā elementu
+			add(element);
+		}
+		else//ielikt elementu kaut kur pa vidu vai sākumā
+		{
+			if(isFull()) {
+				resize();
+			}
+			
+			for(int i = howManyElements; i > index; i--) {
+				list[i] = list[i-1];
+			}
+			
+			list[index] = element;
+			howManyElements++;
+		}
+		
+	}
+
+	
 	
 	//veikt elmeentu kopēsanu no index sūnas līdz beigām (no beigam, līdz index sūnai)
 	

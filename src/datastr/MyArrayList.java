@@ -174,5 +174,34 @@ public class MyArrayList {
 		
 	}
 	
+	//TODO mājās partaisīt funkciju, lai var atrast elmentu vairākas vietas un visas pozīcijas atgriež
+	public int search(char element) throws Exception {
+		if(isEmpty()) {
+			throw (new Exception("Saraksts ir tukšs, tāpēc nevar sameklēt elementu"));
+		}
+		
+		for(int i = 0; i < howManyElements; i++) {
+			if(list[i] == element) {
+				return i;
+			}
+		}
+		
+		throw (new Exception("Meklētais elements nav atrasts"));
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }

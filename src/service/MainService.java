@@ -18,6 +18,8 @@ public class MainService {
 			symbols.print();//a Z c
 			
 			System.out.println(symbols.get(1));//Z
+			
+			System.out.println(symbols.search('c'));//2.pozīcijā
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

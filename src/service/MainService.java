@@ -20,6 +20,7 @@ public class MainService {
 			System.out.println(symbols.get(1));//Z
 			
 			System.out.println(symbols.search('c'));//2.pozīcijā
+			System.out.println(symbols.getNextElement('a'));//Z
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

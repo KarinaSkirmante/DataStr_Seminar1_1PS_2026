@@ -189,8 +189,18 @@ public class MyArrayList {
 		throw (new Exception("Meklētais elements nav atrasts"));
 		
 	}
-	
-	
+	//TODO mājās uztaisīt iespēju, ka element ir vairākas pozīcijās un viņu next elementi arī ir vairāki
+	public char getNextElement(char element)  throws Exception {
+		int indexOfSearchElement = search(element);
+		
+		if(indexOfSearchElement == howManyElements-1) {//ja meklētais elements ir pēdējais, tad viņam nebūs next elements
+			throw (new Exception("Jūsu ievadītais elements ir atrasts kā pēdejais un aiz viņa nav nākamais elements"));
+		}
+		
+		int indexForNextElement = indexOfSearchElement + 1;
+		return list[indexForNextElement];
+		
+	}
 	
 	
 	

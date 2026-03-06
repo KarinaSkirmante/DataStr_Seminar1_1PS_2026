@@ -143,8 +143,18 @@ public class MyArrayList {
 		howManyElements--;
 		
 	}
-	
-	
+	//izveidot funkciju, kas ies cauri visiem 
+	//elementiem un katru elementu izprintē konsolē
+	public void print() throws Exception{
+		if(isEmpty()) {
+			throw (new Exception("Saraksts ir tukšs un to nevar izprintēt"));
+		}
+		
+		for(int i = 0; i < howManyElements; i++) {
+			System.out.print(list[i] + " ");
+		}
+		System.out.println();
+	}
 	
 	
 	

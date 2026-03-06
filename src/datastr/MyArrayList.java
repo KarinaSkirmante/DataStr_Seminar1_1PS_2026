@@ -156,7 +156,23 @@ public class MyArrayList {
 		System.out.println();
 	}
 	
-	
+	public char get(int index) throws Exception{
+		if(isEmpty()) {
+			throw (new Exception("Saraksts ir tukšs, tāpēc nevar atgriezt elementu"));
+		}
+		
+		if(index < 0) {
+			throw (new Exception("Nevar atgriezt elementu, jo index ir negatīvs"));
+		}
+		
+		if(index >= howManyElements) {
+			throw (new Exception("Nevar atgreizt elementu, jo index ir lielāks vai vienāds ka elementu skaits"));
+		}
+		
+		
+		return list[index];
+		
+	}
 	
 
 }

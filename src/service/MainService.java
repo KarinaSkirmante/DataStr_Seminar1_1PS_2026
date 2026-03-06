@@ -21,6 +21,15 @@ public class MainService {
 			
 			System.out.println(symbols.search('c'));//2.pozīcijā
 			System.out.println(symbols.getNextElement('a'));//Z
+			
+			
+			symbols.sort();
+			symbols.print();//Z a c
+			
+			symbols.makeEmpty();//visi iepriekšējie elementi tiek dzēsti
+			symbols.add('W');//W
+			symbols.print();//W
+			
 		}
 		catch (Exception e) {
 			System.out.println(e.getMessage());

@@ -202,9 +202,25 @@ public class MyArrayList {
 		
 	}
 	
+	public void sort() {
+		for(int i = 0 ; i < howManyElements; i++) {
+			for(int j = 0; j < howManyElements; j++) {
+				if(list[i] < list[j]) {
+					char temp = list[i];
+					list[i] = list[j];
+					list[j] = temp;
+				}
+			}
+		}
+	}
 	
-	
-	
+	public void makeEmpty() {
+		list = null;//pazuadē referenci uz datiem, tādā veida dzesot datus
+		System.gc();
+		howManyElements = 0;
+		size = DEFAULT_SIZE;
+		list = new char[size];
+	}
 	
 	
 	

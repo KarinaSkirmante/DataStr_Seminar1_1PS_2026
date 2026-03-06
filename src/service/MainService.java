@@ -5,7 +5,7 @@ import datastr.MyArrayList;
 public class MainService {
 
 	public static void main(String[] args) {
-		MyArrayList symbols = new MyArrayList(2);
+		MyArrayList<Character> symbols = new MyArrayList<Character>(2);
 		symbols.add('a');//a
 		symbols.add('b');//a b
 		symbols.add('c');//a b c (automātiski būs resize izpildījies)

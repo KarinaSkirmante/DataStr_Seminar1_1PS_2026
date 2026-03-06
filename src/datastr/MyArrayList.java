@@ -1,16 +1,16 @@
 package datastr;
 
 
-public class MyArrayList {
+public class MyArrayList<Ttype> {
 	//1.mainīgie
-	private char[] list;
+	private Ttype[] list;
 	private final int DEFAULT_SIZE = 8;//pec noklusjeuma bus 8 sunu masivs, ja lietotajs pats neizdomas citu skaitu
 	private int size = DEFAULT_SIZE;//8
 	private int howManyElements = 0;
 	
 	//2. konstruktori
 	public MyArrayList() {
-		list = new char[size];
+		list = (Ttype[])new Object[size];
 	}
 	
 	public MyArrayList(int inputSize) {
@@ -18,7 +18,7 @@ public class MyArrayList {
 			size = inputSize;
 		}
 				
-		list = new char[size];
+		list = (Ttype[])new Object[size];
 	}
 	
 	//3. pamatalgoritmu funkcijas
@@ -62,7 +62,7 @@ public class MyArrayList {
 
 		int largeSize = (howManyElements < 100)? size * 2 : (int)(size * 1.5);
 		
-		char[] largeList = new char[largeSize];
+		Ttype[] largeList = (Ttype[])new Object[largeSize];
 		
 		
 		for(int i = 0; i < howManyElements; i++) {
@@ -75,7 +75,7 @@ public class MyArrayList {
 		
 	}
 	
-	public void add(char element) {
+	public void add(Ttype element) {
 		if(isFull()) {
 			resize();
 		}
@@ -84,13 +84,12 @@ public class MyArrayList {
 		howManyElements++;
 		
 		//īsaks pieraksts, apvienot abas koda rindas vienā->list[howManyElements++] = element;
-		
-		
+	
 	}
 	
 	//funkcijas definīcija add(char element, int index)
 	
-	public void add(char element, int index) throws Exception {
+	public void add(Ttype element, int index) throws Exception {
 		if(index < 0) {
 			throw (new Exception("Nevar pievienot elementu, jo index ir negatīvs"));
 		}
@@ -139,7 +138,7 @@ public class MyArrayList {
 		for(int i = index; i < howManyElements-1; i++) {
 			list[i] = list[i+1];
 		}
-		list[howManyElements-1] = ' ';//pie referenču vērtībām būs jāuzstāda null
+		list[howManyElements-1] = null;
 		howManyElements--;
 		
 	}
@@ -156,7 +155,7 @@ public class MyArrayList {
 		System.out.println();
 	}
 	
-	public char get(int index) throws Exception{
+	public Ttype get(int index) throws Exception{
 		if(isEmpty()) {
 			throw (new Exception("Saraksts ir tukšs, tāpēc nevar atgriezt elementu"));
 		}
@@ -169,19 +168,18 @@ public class MyArrayList {
 			throw (new Exception("Nevar atgreizt elementu, jo index ir lielāks vai vienāds ka elementu skaits"));
 		}
 		
-		
 		return list[index];
 		
 	}
 	
 	//TODO mājās partaisīt funkciju, lai var atrast elmentu vairākas vietas un visas pozīcijas atgriež
-	public int search(char element) throws Exception {
+	public int search(Ttype element) throws Exception {
 		if(isEmpty()) {
 			throw (new Exception("Saraksts ir tukšs, tāpēc nevar sameklēt elementu"));
 		}
 		
 		for(int i = 0; i < howManyElements; i++) {
-			if(list[i] == element) {
+			if(list[i].equals(element)) {
 				return i;
 			}
 		}
@@ -190,7 +188,7 @@ public class MyArrayList {
 		
 	}
 	//TODO mājās uztaisīt iespēju, ka element ir vairākas pozīcijās un viņu next elementi arī ir vairāki
-	public char getNextElement(char element)  throws Exception {
+	public Ttype getNextElement(Ttype element)  throws Exception {
 		int indexOfSearchElement = search(element);
 		
 		if(indexOfSearchElement == howManyElements-1) {//ja meklētais elements ir pēdējais, tad viņam nebūs next elements
@@ -205,8 +203,8 @@ public class MyArrayList {
 	public void sort() {
 		for(int i = 0 ; i < howManyElements; i++) {
 			for(int j = 0; j < howManyElements; j++) {
-				if(list[i] < list[j]) {
-					char temp = list[i];
+				if(((Comparable)list[i]).compareTo(list[j]) == -1) {
+					Ttype temp = list[i];
 					list[i] = list[j];
 					list[j] = temp;
 				}
@@ -219,7 +217,7 @@ public class MyArrayList {
 		System.gc();
 		howManyElements = 0;
 		size = DEFAULT_SIZE;
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	
